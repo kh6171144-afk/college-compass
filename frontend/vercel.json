@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://college-compass-backend-0o62.onrender.com/api/$1"
+    }
+  ]
+}
