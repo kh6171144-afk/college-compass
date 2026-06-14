@@ -14,7 +14,12 @@ const usePostgres = process.env.PGHOST || process.env.DATABASE_URL;
 if (usePostgres) {
   try {
     const config = process.env.DATABASE_URL
-      ? { connectionString: process.env.DATABASE_URL }
+  ? {
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false
+      }
+    }
       : {
           user: process.env.PGUSER || 'postgres',
           host: process.env.PGHOST || 'localhost',
