@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-const sqlite3 = require('sqlite3').verbose();
+let sqlite3 = null;
 const path = require('path');
 const fs = require('fs');
 require('dotenv').config();
@@ -37,6 +37,7 @@ if (usePostgres) {
 
 // If SQLite fallback is active, establish connection to local file
 if (dbType === 'sqlite') {
+  sqlite3 = require('sqlite3').verbose();
   const dbDir = path.resolve(__dirname, '../../data');
   if (!fs.existsSync(dbDir)) {
     fs.mkdirSync(dbDir, { recursive: true });
